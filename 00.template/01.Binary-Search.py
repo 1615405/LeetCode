@@ -1,3 +1,32 @@
+bool check(int x) {/* ... */}  # 检查 x 是否满足某种性质
+
+# 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
+int bsearch_1(int l, int r)
+{
+    while (l < r)
+    {
+        int mid = l + r >> 1;
+        if (check(mid)) r = mid;    # check()判断 mid 是否满足性质
+        else l = mid + 1;
+    }
+    return l;
+}
+
+# 区间[l, r]被划分成[l, mid - 1]和[mid, r]时使用：
+int bsearch_2(int l, int r)
+{
+    while (l < r)
+    {
+        int mid = l + r + 1 >> 1;
+        if (check(mid)) l = mid;
+        else r = mid - 1;
+    }
+    return l;
+}
+
+
+
+
 '''
 整数集合上的二分
 lower_bound 返回最小的满足 nums[i] >= target 的 i
@@ -56,36 +85,6 @@ def lower_bound3(nums: List[int], target: int) -> int:
             right = mid  # 范围缩小到 (left, mid)
     return right  # 或者 left+1
 
-
-
-
-'''
-整数集合上的二分
-最终答案处于闭区间[l,r]内, 循环以 l==r 结束, 每次二分的中间值 mid 会归属于
-左半段与右半段二者之一
-'''
-
-# 在单调递增序列 a 中查找 >= x 的数中最小的一个(即x或x的后继):
-while (l < r) {
-    int mid = (l + r) >> 1;
-    if (a[mid] >= x) {
-        r = mid;
-    } else {
-        l = mid + 1
-    }
-}
-return a[l];
-
-# 在单调递增序列 a 中查找 <= x 的数中最大的一个(即x或x的前驱):
-while (l < r) {
-    int mid = (l + r + 1) >> 1;
-    if (a[mid] <= x) {
-        l = mid;
-    } else {
-        r = mid - 1;
-    }
-}
-return a[l];
 
 
 
