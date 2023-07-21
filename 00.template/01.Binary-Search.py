@@ -18,7 +18,7 @@ int bsearch_2(int l, int r)
     while (l < r)
     {
         int mid = l + r + 1 >> 1;
-        if (is_red(mid)) l = mid; # mid 属于蓝色, l = mid
+        if (is_red(mid)) l = mid; # mid 属于红色, l = mid
         else r = mid - 1;
     }
     return l;
