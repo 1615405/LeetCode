@@ -3,7 +3,7 @@ bool is_blue(int x) {/* ... */}  # 红蓝染色法
 # 区间[l, r]被划分成[l, mid]和[mid + 1, r]时使用：
 int bsearch_1(int l, int r)
 {
-    while (l < r)
+     while (l < r)
     {
         int mid = l + r >> 1;
         if (is_blue(mid)) r = mid;    # mid 属于蓝色, right = mid

@@ -1,6 +1,6 @@
 class Solution:
     def majorityElement(self, nums: List[int]) -> int:
-        # Boyer-Moore 投票算法
+         # Boyer-Moore 投票算法
         # 时间复杂度 O(n)
         # 空间复杂度 O(n)
         count = 0
