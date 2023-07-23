@@ -41,6 +41,7 @@ int bsearch_2(int l, int r)
 
 
 
+
 '''
 在实数域上二分较为简单, 确定好所需的精度eps, 以 l+eps < r 为循环条件, 每次
 根据在mid上的判定选择 r=mid 或 l=mid 分支之一即可。一般需要保留 k 位小数时,
