@@ -9,3 +9,33 @@ def majorityElement(self, nums: List[int]) -> int:
             candidate = num
         count += (1 if num == candidate else -1)
     return candidate
+
+
+
+
+def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+    # 拓扑排序
+    indegrees = [0 for _ in range(numCourses)]
+    adjacency = [[] for _ in range(numCourses)]
+    queue = deque()
+
+    # Get the indegree and adjaceny of every course
+    for cur, pre in prerequisites:
+        indegrees[cur] += 1
+        adjacency[pre].append(cur)
+    
+    # Get all the courses with the indegree of 0.
+    for i in range(len(indegrees)):
+        if not indegrees[i]:
+            queue.append(i)
+    
+    # BFS TopSort()
+    while queue:
+        pre = queue.popleft()
+        numCourses -= 1
+        for cur in adjacency[pre]:
+            indegrees[cur] -= 1
+            if not indegrees[cur]:
+                queue.append(cur)
+
+    return not numCourses
