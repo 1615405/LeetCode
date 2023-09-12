@@ -1,4 +1,3 @@
-'''
 class Solution:
     def numSquares(self, n: int) -> int:
         nums = []
@@ -20,7 +19,6 @@ class Solution:
                     dp[i][j] = min(dp[i - 1][j], dp[i][j - nums[i - 1]] + 1)
         
         return dp[length][target]
-'''
 
 
 class Solution:

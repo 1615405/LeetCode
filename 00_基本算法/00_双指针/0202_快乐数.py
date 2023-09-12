@@ -8,8 +8,6 @@ class Solution:
                 total_sum += digit ** 2
             return total_sum
         
-
-        seen = set()
         fastRunner, slowRunner = get_next(n), n
         while fastRunner != slowRunner:
             fastRunner = get_next(get_next(fastRunner))
