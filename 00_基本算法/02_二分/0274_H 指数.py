@@ -1,4 +1,3 @@
-'''
 class Solution:
     def hIndex(self, citations: List[int]) -> int:
         n = len(citations)
@@ -14,7 +13,8 @@ class Solution:
             if tot >= i:
                 return i
         return 0
-'''
+
+
 
 class Solution:
     def hIndex(self, citations: List[int]) -> int:

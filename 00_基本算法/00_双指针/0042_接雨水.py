@@ -1,6 +1,23 @@
 class Solution:
     def trap(self, height: List[int]) -> int:
-        """  前后缀分解
+        n, ans = len(height), 0
+        left, right = 0, n - 1
+        pre_max, suf_max = 0, 0
+        while left <= right:
+            pre_max = max(pre_max, height[left])
+            suf_max = max(suf_max, height[right])
+            if pre_max < suf_max:
+                ans += pre_max - height[left]
+                left += 1
+            else:
+                ans += suf_max - height[right]
+                right -= 1
+        return ans
+
+
+
+class Solution:
+    def trap(self, height: List[int]) -> int:
         n, ans = len(height), 0
         pre_max = [0] * n
         suf_max = [0] * n
@@ -16,18 +33,4 @@ class Solution:
         for h, pre, suf in zip(height, pre_max, suf_max):
             ans += min(pre, suf) - h
         
-        return ans
-        """
-        n, ans = len(height), 0
-        left, right = 0, n - 1
-        pre_max, suf_max = 0, 0
-        while left <= right:
-            pre_max = max(pre_max, height[left])
-            suf_max = max(suf_max, height[right])
-            if pre_max < suf_max:
-                ans += pre_max - height[left]
-                left += 1
-            else:
-                ans += suf_max - height[right]
-                right -= 1
         return ans

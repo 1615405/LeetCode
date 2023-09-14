@@ -1,9 +1,5 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        '''
-        sgood = "".join(ch.lower() for ch in s if ch is isalnum())
-        return sgood == sdood[::-1]
-        '''
         n = len(s)
         left, right = 0, n - 1
         while left < right:
@@ -17,3 +13,10 @@ class Solution:
                 left += 1
                 right -= 1
         return True
+
+
+
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        s = re.sub(r'[^a-z0-9]', '', s.strip().lower())
+        return s == s[::-1]
